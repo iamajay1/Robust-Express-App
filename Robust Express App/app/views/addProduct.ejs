@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+
+    <% include ./design/style1.ejs %>
+
+  </head>
+
+  <body>
+
+    <!-- Navigation -->
+
+       <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+         <div class="container">
+           <a class="navbar-brand" href="#">Experience The New Way Of Shopping</a>
+           <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+             <span class="navbar-toggler-icon"></span>
+           </button>
+           <div class="collapse navbar-collapse" id="navbarResponsive">
+             <ul class="navbar-nav ml-auto">
+               <li class="nav-item active">
+                 <a class="btn btn-default row-group-item" href="#">Home
+                   <span class="sr-only">(current)</span>
+                 </a>
+               </li>
+               <li class="nav-item">
+                 <a class="btn btn-default row-group-item" href="http://localhost:1993/profile">Profile</a>
+               </li>
+               <li class="nav-item">
+                 <a class="btn btn-default row-group-item" href="http://localhost:1993/cart">Cart
+                   <% if(cart){ %>
+                      <%= cart.totalQuantity %>
+                  <% } else{ %>
+                      0
+                    <% } %>
+                </a>
+               </li>
+               <li class="nav-item">
+                 <a class="btn btn-default row-group-item" href="http://localhost:1993/logout">Logout</a>
+               </li>
+             </ul>
+           </div>
+         </div>
+       </nav>
+
+    <!-- Page Content -->
+    <div class="container">
+
+      <div class="row">
+
+        <div class="col-lg-3">
+
+          <h2 class="my-4">Shoppers-Point</h2>
+          <div class="list-group">
+
+			<a href="http://localhost:1993/dashboard" class="list-group-item ">VIEW PRODUCT</a>
+
+			<a href="#" class="list-group-item active">ADD PRODUCT</a>
+
+          </div>
+
+        </div>
+        <!-- /.col-lg-3 -->
+
+        <div class="col-lg-9">
+
+          <div id="carouselExampleIndicators" class="carousel slide my-4" data-ride="carousel">
+            <ol class="carousel-indicators">
+              <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
+              <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
+              <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
+            </ol>
+            <div class="carousel-inner" role="listbox">
+              <div class="carousel-item active">
+                <img class="d-block img-fluid" src="/images/403464409-shopping-wallpapers.jpg" alt="First slide">
+              </div>
+              <div class="carousel-item">
+                <img class="d-block img-fluid" src="/images/403464626-shopping-wallpapers.jpg" alt="Second slide">
+              </div>
+              <div class="carousel-item">
+                <img class="d-block img-fluid" src="/images/403464598-shopping-wallpapers.jpg" alt="Third slide">
+              </div>
+            </div>
+            <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
+              <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+              <span class="sr-only">Previous</span>
+            </a>
+            <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
+              <span class="carousel-control-next-icon" aria-hidden="true"></span>
+              <span class="sr-only">Next</span>
+            </a>
+          </div>
+
+          <div class="form-horizontal">
+            <h1 class="my-4"><b>New Product Details </b> </h1>
+          </div>
+
+            <form class="form-horizontal" enctype="multipart/form-data" action='http://localhost:1993/users/addProduct' method="post">
+
+                <div class="form-group">
+                    <label class="control-label col-sm-3">Product Name :</label>
+                      <div class="col-sm-8">
+                        <input type="text" class="form-control" name="pName" placeholder="Product Name" required>
+                      </div>
+                </div>
+                <div class="form-group">
+                    <label class="control-label col-sm-3">Category :</label>
+                      <div class="col-sm-8">
+                        <input type="text" class="form-control" name="pCategory" placeholder="Category" required>
+                      </div>
+                </div>
+                <div class="form-group">
+                    <label class="control-label col-sm-3">Ideal For :</label>
+                      <div class="col-sm-8">
+                        <select name="pIdeal" class="form-control">
+                          <option value="Man">Men</option>
+                          <option value="Women">Women</option>
+                          <option value="Unisex">Unisex</option>
+                        </select>
+                      </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="control-label col-sm-3">Price For Sale:</label>
+                      <div class="col-sm-8">
+                        <input type="Number" class="form-control " name="pPrice" placeholder="Price" required>
+                      </div>
+                </div>
+                <div class="form-group">
+                    <label class="control-label col-sm-3">Original Price :</label>
+                      <div class="col-sm-8">
+                        <input type="Number" class="form-control " name="pOPrice" placeholder="Original Price" required>
+                      </div>
+                </div>
+                <div class="form-group">
+                    <label class="control-label col-sm-3">Offer Discount :</label>
+                      <div class="col-sm-8">
+                        <input type="Number" class="form-control " name="pDiscount" placeholder="Discount In %" required>
+                      </div>
+                </div>
+                <div class="form-group">
+                    <label class="control-label col-sm-3">Description :</label>
+                      <div class="col-sm-8">
+                      <textarea class="form-control" name="pDescription" placeholder="Description" rows="4"  required></textarea>
+                      </div>
+                </div>
+                <div class="form-group">
+                    <label class="control-label col-sm-3">Quantity :</label>
+                      <div class="col-sm-8">
+                        <input type="Number" class="form-control " name="pQuantity" placeholder="Product Quantity" required>
+                      </div>
+                </div>
+                <div class="form-group">
+                    <label class="control-label col-sm-3">Brand Name:</label>
+                      <div class="col-sm-8">
+                        <input type="text" class="form-control " name="pBrand" placeholder="Brand Name" required>
+                      </div>
+                </div>
+                <div class="form-group">
+                    <label class="control-label col-sm-3">Size:</label>
+                      <div class="col-sm-8">
+                        <input type="text" class="form-control " name="pSize" placeholder="Product Size" required>
+                      </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="control-label col-sm-3">Add Images:</label>
+                      <div class="col-sm-12">
+                        <input type="file"  id="image1" name="image1"  accept="image/*" style="color:red"  multiple required />
+
+                      </div>
+                </div>
+
+                <div class="form-group">
+                    <div class="col-sm-offset-2 col-sm-10">
+                        <button type="submit"  class="btn btn-default">Add Product</button>
+                    </div>
+                </div>
+              </form>
+          </div>
+          <!-- /.row -->
+
+        </div>
+        <!-- /.col-lg-9 -->
+
+      </div>
+      <!-- /.row -->
+
+    </div>
+    <!-- /.container -->
+
+    <!-- Footer -->
+    <footer class="py-5 bg-dark">
+      <div class="container">
+        <p class="m-0 text-center text-white">		©2018  All Rights Reserved & Design by - Ajay Jadhav</p>
+      </div>
+      <!-- /.container -->
+    </footer>
+
+    <!-- Bootstrap core JavaScript -->
+
+  </body>
+
+</html>
